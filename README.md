@@ -10,7 +10,7 @@ Currently supports **PDF**, **DOCX**, and **TXT** files — either individually 
 - Retries on transient API errors (rate limits, timeouts)
 - Configurable OpenAI model via:
   - CLI flag `--model`
-  - Environment variable `PDF_SUMMARIZER_MODEL`
+  - Environment variable `DOCUMENT_SUMMARIZER_MODEL`
 - `.env` file support for storing your API key
 - Output either to terminal or saved as `.txt` files
 
@@ -21,7 +21,7 @@ Currently supports **PDF**, **DOCX**, and **TXT** files — either individually 
 Clone and install locally in editable mode:
 
 ```bash
-git clone https://github.com/yourusername/docsum.git
+git clone https://github.com/almightyzeus/docsum-cli.git
 cd docsum
 python -m venv venv && source venv/bin/activate
 cd ..
@@ -31,7 +31,7 @@ pip install -e .
 Or install directly from GitHub:
 
 ```bash
-pip install git+https://github.com/yourusername/docsum.git
+pip install git+https://github.com/almightyzeus/docsum-cli.git
 ```
 
 ---
@@ -47,14 +47,14 @@ export OPENAI_API_KEY="sk-..."
 Optionally set a default model:
 
 ```bash
-export PDF_SUMMARIZER_MODEL="gpt-4o"
+export DOCUMENT_SUMMARIZER_MODEL="gpt-4o"
 ```
 
 You can also create a `.env` file inside the `docsum` folder or in your home directory:
 
 ```env
 OPENAI_API_KEY=sk-...
-PDF_SUMMARIZER_MODEL=gpt-4o
+DOCUMENT_SUMMARIZER_MODEL=gpt-4o
 ```
 
 ---

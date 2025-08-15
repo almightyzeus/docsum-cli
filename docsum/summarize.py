@@ -3,7 +3,7 @@ import time
 from typing import Optional, List
 from openai import OpenAI
 
-DEFAULT_MODEL = os.getenv("PDF_SUMMARIZER_MODEL", "gpt-4o")
+DEFAULT_MODEL = os.getenv("DOCUMENT_SUMMARIZER_MODEL", "gpt-4o")
 
 class Summarizer:
     def __init__(self, api_key: Optional[str] = None, model: Optional[str] = None):

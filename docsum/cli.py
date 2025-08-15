@@ -26,7 +26,7 @@ def build_parser():
     p = argparse.ArgumentParser(prog="docsum", description="Summarize documents or folders using OpenAI models.")
     p.add_argument("path", help="Path to a file or a folder.")
     p.add_argument("--output", "-o", help="Output file (for single file) or directory (for folder).")
-    p.add_argument("--model", "-m", help="Model name (overrides PDF_SUMMARIZER_MODEL env).")
+    p.add_argument("--model", "-m", help="Model name (overrides DOCUMENT_SUMMARIZER_MODEL env).")
     p.add_argument("--max-tokens", type=int, default=1000, help="Max tokens per chunk before calling the model.")
     return p
 
@@ -61,7 +61,7 @@ def summarize_folder(folder_path, summarizer, max_tokens, output_dir=None):
 
 def main():
     args = build_parser().parse_args()
-    model = args.model or os.getenv("PDF_SUMMARIZER_MODEL") or "gpt-4o"
+    model = args.model or os.getenv("DOCUMENT_SUMMARIZER_MODEL") or "gpt-4o"
     summarizer = Summarizer(model=model)
 
     if os.path.isdir(args.path):
