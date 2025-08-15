@@ -1,0 +1,5 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+venv/
+.env
+docsum.egg-info/

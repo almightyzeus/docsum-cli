@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docsum"
+version = "0.1.0"
+description = "Document Summarizer CLI (PDF for now) using OpenAI"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name="Chinmay Pendse"}]
+license = {text = "MIT"}
+dependencies = [
+    "openai>=1.0.0",
+    "PyPDF2>=3.0.0",
+    "python-docx>=0.8.11",
+    "tiktoken>=0.5.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+docsum = "docsum.cli:main"
+
+[tool.setuptools]
+packages = ["docsum"]
+include-package-data = true
