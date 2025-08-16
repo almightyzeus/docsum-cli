@@ -50,7 +50,7 @@ Optionally set a default model:
 export DOCUMENT_SUMMARIZER_MODEL="gpt-4o"
 ```
 
-You can also create a `.env` file inside the `docsum` folder or in your home directory:
+You can also create a `.env` file inside the `docsum` folder:
 
 ```env
 OPENAI_API_KEY=sk-...
