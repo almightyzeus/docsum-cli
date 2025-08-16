@@ -43,9 +43,13 @@ def summarize_folder(folder_path, summarizer, max_tokens, output_dir=None):
             if ext in SUPPORTED_EXTENSIONS:
                 file_path = os.path.join(root, file_name)
                 print(f"\n📄 Processing {file_path} ...")
-                text = read_text_by_ext(file_path)
-                chunks = split_text_into_chunks(text, max_tokens=max_tokens)
-                summary = summarizer.summarize_chunks(chunks)
+                try:
+                    text = read_text_by_ext(file_path)
+                    chunks = split_text_into_chunks(text, max_tokens=max_tokens)
+                    summary = summarizer.summarize_chunks(chunks)
+                except ValueError as e:
+                    print(f"❌ Could not summarize file: {file_path}\n    Reason: {e}", file=sys.stderr)
+                    continue
 
                 if output_dir:
                     os.makedirs(output_dir, exist_ok=True)
@@ -77,7 +81,11 @@ def main():
         print("Unsupported file type. Currently supported: .pdf,.docx,.txt", file=sys.stderr)
         sys.exit(2)
 
-    summary = summarize_file(args.path, summarizer, args.max_tokens)
+    try:
+        summary = summarize_file(args.path, summarizer, args.max_tokens)
+    except ValueError as e:
+        print(f"❌ Could not summarize file: {args.path}\n    Reason: {e}", file=sys.stderr)
+        sys.exit(3)
 
     if args.output:
         with open(args.output, "w", encoding="utf-8") as f:
